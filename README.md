@@ -11,6 +11,15 @@ npm run start
 Import the angular import map in your root-config.
 ```
 <script type="systemjs-importmap" src="http://localhost:4201/angular-import-map.json"></script>
+<script type="systemjs-importmap">
+  {
+    "imports": {
+      "rxjs": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs/system/es2015/rxjs.min.js",
+      "rxjs/operators": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs/system/es2015/rxjs-operators.min.js",
+      "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js"
+    }
+  }
+</script>
 ```
 
 
