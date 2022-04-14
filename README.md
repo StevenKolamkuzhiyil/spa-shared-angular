@@ -36,20 +36,7 @@ singleSpaWebpackConfig.externals.push(
 ## Warnings:
 
 ### Performance:
-```
-WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
-This can impact web performance.
-Assets:
-  @angular__compiler.js (609 KiB)
-  @angular__core.js (449 KiB)
-  
-WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
-Entrypoints:
-  @angular__compiler (609 KiB)
-      @angular__compiler.js
-  @angular__core (449 KiB)
-      @angular__core.js
-      
+@angular/core, @angular/compiler and @angular/material dependencies  exceed the recommended size limit (244 KiB).
 ```
 
 ### System.import() deprecation warning:
