@@ -22,6 +22,16 @@ Import the angular import map in your root-config.
 </script>
 ```
 
+Add the angular dependencies as externals to your Single-Spa Angular application.
+```
+singleSpaWebpackConfig.externals.push(
+  "rxjs",
+  "rxjs/operators",
+  'single-spa',
+  'single-spa-angular',
+  /^@angular\/.*/,
+);
+```
 
 ## Warnings:
 
