@@ -1,6 +1,18 @@
 # spa-shared-angular
 Angular CDNs for Single-Spa
 
+## Usage:
+
+```
+npm install
+npm run start
+```
+
+Import the angular import map in your root-config.
+```
+<script type="systemjs-importmap" src="http://localhost:4201/angular-import-map.json"></script>
+```
+
 
 ## Warnings:
 
