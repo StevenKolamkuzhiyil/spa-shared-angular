@@ -5,16 +5,30 @@ const allDeps = Object.keys(packageJson.dependencies);
 const allDevDeps = Object.keys(packageJson.devDependencies);
 const angularDeps = allDeps.filter(s => s.startsWith('@angular/'))
 
+const fs = require('fs');
+const path = require('path');
+
+function addAllFilesInPackage(result, scope, baseName, removeTestingFiles = false) {
+    const directoryContent = fs.readdirSync(path.join(__dirname, 'node_modules', scope, baseName, 'fesm2015'));
+    const files = directoryContent?.filter(file => file.match(/.*\.js$/ig)) || [];
+    const fileNames = files.map(file => file.slice(0, -3))
+        .filter(file => file !== 'upgrade')
+        .filter(file => file === 'testing' ? !removeTestingFiles : true);
+
+    fileNames.forEach(fileName => {
+        if (baseName !== fileName) {
+            result[`${scope}__${baseName}__${fileName}`] = `./node_modules/${scope}/${baseName}/fesm2015/${fileName}.js`;
+        } else {
+            result[`${scope}__${baseName}`] = `./node_modules/${scope}/${baseName}/fesm2015/${baseName}.js`;
+        }
+    });
+}
+
 function createDepsMap(keys) {
     const result = {};
     for (let key of keys) {
         const [scope, baseName] = key.split('/', 2);
-        result[`${scope}__${baseName}`] = `./node_modules/${scope}/${baseName}/fesm2015/${baseName}.js`;
-        if (key === '@angular/platform-browser') {
-            result[`${scope}__${baseName}__animations`] = `./node_modules/${scope}/${baseName}/fesm2015/animations.js`;
-        } else if (key === '@angular/animations') {
-            result[`${scope}__${baseName}__browser`] = `./node_modules/${scope}/${baseName}/fesm2015/browser.js`;
-        }
+        addAllFilesInPackage(result, scope, baseName, true);
     }
     return result;
 }
