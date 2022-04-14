@@ -1,5 +1,5 @@
 # spa-shared-angular
-Angular CDNs for Single-Spa
+Angular CDNs with Angular Material for Single-Spa
 
 ## Usage:
 
