@@ -84,3 +84,7 @@ Critical dependency: the request of a dependency is an expression
 
 ```
 
+
+### Credits:
+https://github.com/lqc/spa-test
+
