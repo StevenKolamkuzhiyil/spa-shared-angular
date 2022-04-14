@@ -37,7 +37,7 @@ singleSpaWebpackConfig.externals.push(
 
 ### Performance:
 @angular/core, @angular/compiler and @angular/material dependencies  exceed the recommended size limit (244 KiB).
-```
+
 
 ### System.import() deprecation warning:
 ```
