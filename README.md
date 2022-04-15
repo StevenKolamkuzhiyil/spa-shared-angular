@@ -70,7 +70,6 @@ WARNING in ./node_modules/@angular/core/fesm2015/core.js 29770:15-102
 Critical dependency: the request of a dependency is an expression
 
 ```
-Caused by conflict of `ContextReplacementPlugin` between Angular v11 and `@angular-builders/custom-webpack-config`.
 "Fixed" in Angular v13 since `ContextReplacementPlugin` isn't used (https://github.com/angular/angular/issues/43092#issuecomment-895848535).  
 
 
