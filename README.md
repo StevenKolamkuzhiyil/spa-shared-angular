@@ -74,7 +74,7 @@ Critical dependency: the request of a dependency is an expression
 
 
 ## Issues:
-For some reason the externals don't have access to Class Instances provided in the AppModule. The provided workaround in the example doesn't solve the underlying issue and doesn't guarantee a working `@angular/material` library.
+For some reason the externally provided scripts don't have access to class instances provided in the AppModule. The provided workaround in the example doesn't solve the underlying issue and doesn't guarantee a working `@angular/material` library.
 
 ###Example:
 ```
