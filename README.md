@@ -73,6 +73,36 @@ Critical dependency: the request of a dependency is an expression
 "Fixed" in Angular v13 since `ContextReplacementPlugin` isn't used (https://github.com/angular/angular/issues/43092#issuecomment-895848535).  
 
 
-### Credits:
+## Issues:
+For some reason the externals don't have access to Class Instances provided in the AppModule. The provided workaround in the example doesn't solve the underlying issue and doesn't guarantee a working `@angular/material` library.
+
+####Example:
+```
+ERROR Error: Could not find HttpClient provider for use with Angular Material icons. Please include the HttpClientModule from @angular/common/http in your app imports.
+    at p (@angular__material__icon.js:727:3216)
+    at g._fetchIcon (@angular__material__icon.js:727:8373)
+    at g._loadSvgIconFromConfig (@angular__material__icon.js:727:6880)
+    at g._getSvgFromConfig (@angular__material__icon.js:727:6022)
+    at getNamedSvgIcon (@angular__material__icon.js:727:5573)
+    at O._updateSvgIcon (@angular__material__icon.js:734:4965)
+    at O.set svgIcon [as svgIcon] (@angular__material__icon.js:734:2070)
+    at yc (@angular__core.js:572:21212)
+    at @angular__core.js:572:12339
+    at Ka (@angular__core.js:572:12381)
+```
+
+Workaround:
+Provide the HttpClientModule to the MatIconRegistry by manually injecting it.
+```
+{
+  provide: MatIconRegistry,
+  useFactory: (httpClient: HttpClient, domSanitizer: DomSanitizer, document: Document, errorHandler: ErrorHandler) =>
+    new MatIconRegistry(httpClient, domSanitizer, document, errorHandler),
+  deps: [HttpClient, DomSanitizer, DOCUMENT, ErrorHandler]
+}
+```
+
+
+## Credits:
 https://github.com/lqc/spa-test
 
