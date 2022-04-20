@@ -76,7 +76,7 @@ Critical dependency: the request of a dependency is an expression
 ## Issues:
 For some reason the externals don't have access to Class Instances provided in the AppModule. The provided workaround in the example doesn't solve the underlying issue and doesn't guarantee a working `@angular/material` library.
 
-####Example:
+###Example:
 ```
 ERROR Error: Could not find HttpClient provider for use with Angular Material icons. Please include the HttpClientModule from @angular/common/http in your app imports.
     at p (@angular__material__icon.js:727:3216)
